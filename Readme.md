@@ -1,9 +1,18 @@
-## Getting started locally
+==== SERVER FOR THE MOCHI APP ====
 
-1. `npm install`
-1. Create your DB in PGAdmin with a name
-1. Create a `.env` file
-1. Copy the information found in the `.env.example` file and create your own `.env file`
-1. Adjust the values in the env file to match your project
-1. Modify the app.js file with the resetDatabase if you are currently building your models out
-1. `nodemon` or `npx nodemon` to start server
+Includes controllers for:
+- comment
+- post
+- user
+as well as an index file for controllers.
+
+Includes middleware:
+- CORS
+- validate session
+as well as an index file for middleware.
+
+Includes models for:
+- comment
+- post
+- user
+as well as an index file for models.

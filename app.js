@@ -12,13 +12,15 @@ const controllers = require("./controllers");
 
 // Parse the body of all requests as JSON
 app.use(Express.json());
-app.use(middlewares.CORS)
-app.use("/user", controllers.User);
+app.use(middlewares.CORS);
+app.use("/users", controllers.User);
+app.use("/posts", controllers.Post);
+app.use("/comments", controllers.Comment);
 
-const resetDatabase = {force:true}
+const resetDatabase = { force: true };
 db.authenticate()
-// add a resetDatabase inside the db.sync to drop all your tables if needed
-// example:  .then(() => db.sync(resetDatabase))
+  // add a resetDatabase inside the db.sync to drop all your tables if needed
+  // example:  .then(() => db.sync(resetDatabase))
   .then(() => db.sync())
   .then(() =>
     app.listen(process.env.PORT, () => {

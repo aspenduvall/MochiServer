@@ -1,5 +1,5 @@
 {
-  "name": "jsserver",
+  "name": "mochi-server",
   "version": "1.0.0",
   "description": "An Express TODO API application.",
   "main": "app.js",
@@ -9,7 +9,7 @@
     "dev": "nodemon app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Aspen Duvall",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

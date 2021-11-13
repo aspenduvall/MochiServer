@@ -18,7 +18,7 @@ router.post("/new", validateSession, (req, res) => {
 });
 
 router.get("/", validateSession, (req, res) => {
-  Post.findAll()
+  Post.findAll({include: "user"})
     .then((userPost) => res.status(200).json(userPost))
     .catch((err) => res.status(500).json({ error: err }));
 });
@@ -39,7 +39,7 @@ router.put("/edit/:id", validateSession, function (req, res) {
     tags: req.body.post.tags,
   };
 
-  const query = { where: { id: req.params.id, creatorID: req.user.id } };
+  const query = { where: { id: req.params.id, userId: req.user.id } };
 
   Post.update(editPost, query)
     .then((userPost) => res.status(200).json(userPost))
@@ -47,7 +47,7 @@ router.put("/edit/:id", validateSession, function (req, res) {
 });
 
 router.delete("/delete/:id", validateSession, function (req, res) {
-  const query = { where: { id: req.params.id, creatorID: req.user.id } };
+  const query = { where: { id: req.params.id, userId: req.user.id } };
 
   Post.destroy(query)
     .then(() => res.status(200).json({ message: "Post destroyed ):" }))

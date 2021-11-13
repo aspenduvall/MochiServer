@@ -7,7 +7,7 @@ const Post = db.define("post", {
     allowNull: true,
   },
   content: {
-    type: DataTypes.STRING(500),
+    type: DataTypes.STRING(2000),
     allowNull: false,
   },
   image: {

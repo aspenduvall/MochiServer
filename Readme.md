@@ -1,5 +1,7 @@
 ==== SERVER FOR THE MOCHI APP ====
 
+Requires CORS installation, Express, dotEnv, and Sequelize.
+
 Includes controllers for:
 - comment
 - post

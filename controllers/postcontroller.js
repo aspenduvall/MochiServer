@@ -39,7 +39,12 @@ router.put("/edit/:id", validateSession, function (req, res) {
     tags: req.body.post.tags,
   };
 
-  const query = { where: { id: req.params.id, userId: req.user.id } };
+  let query;
+  if (req.user.isAdmin == true) {
+    query = { where: { id: req.params.id } };
+  } else {
+    query = { where: { id: req.params.id, userId: req.user.id } };
+  }
 
   Post.update(editPost, query)
     .then((userPost) => res.status(200).json(userPost))
@@ -47,7 +52,12 @@ router.put("/edit/:id", validateSession, function (req, res) {
 });
 
 router.delete("/delete/:id", validateSession, function (req, res) {
-  const query = { where: { id: req.params.id, userId: req.user.id } };
+  let query;
+  if (req.user.isAdmin == true) {
+    query = { where: { id: req.params.id } };
+  } else {
+    query = { where: { id: req.params.id, userId: req.user.id } };
+  }
 
   Post.destroy(query)
     .then(() => res.status(200).json({ message: "Post destroyed ):" }))
